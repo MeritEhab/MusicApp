@@ -31,11 +31,10 @@ class DetailSongs(View):
 
     def post(self, request, pk):
         song = Song.objects.get(id=pk)
-        print request.POST.get('playlist_select') 
 
         if request.POST.get('playlist_select'):
             playlistID = request.POST.get('playlist_select')
-            playlist_obj = PlayList.objects.get(id=playlistID)
+            playlist_obj = get_object_or_404(PlayList, id=playlistID)
             playlist_obj.songs.add(song)
             playlist_obj.save()
             return redirect('song:show_songs')
