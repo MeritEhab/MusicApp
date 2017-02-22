@@ -1,0 +1,40 @@
+{% extends 'songs/base.html' %}
+
+{% block title %}Song Details{% endblock %}
+
+{% block body %}
+{% if song.logo %}
+	<img src='{{song.logo.url}}'/>
+{% endif %}
+<h1>{{ song.song_title }}</h1>
+<h3>{{ song.artist }}</h3>
+{%if user.is_superuser%}
+	<form action="delete/" method="post" name='song_delete' >
+	    {% csrf_token %}
+	    <br><br>
+	    <input type="submit" value="Delete Song">
+	</form>
+	
+	<form action="edit/"  name='song_edit' >
+	    {% csrf_token %}
+	    <br><br>
+	    <input type="submit" value="Edit Song">
+	</form>
+	<br><br>
+{%endif%}
+
+
+<form action="" method="POST" name='save_song_to_playlist' >
+    {% csrf_token %}
+    <br><br>
+<select name="playlist_select">
+    {% for item in playlist %}
+        <option value="{{item.id}}" selected="selected" >{{item.name}}</option>
+    {% endfor %}
+</select>
+    <br><br>
+    <input type="submit" value="Save Song to Playlist">
+</form>
+	
+
+{% endblock %}

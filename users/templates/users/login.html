@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body%}
+<h3>Please enter your username and password below</h3><br>
+
+<!-- {% if error_message %}
+     <p><strong><font color="red">{{ error_message }}</font></strong></p>
+{% endif %} -->
+     
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+	<br><br>
+   <input type="submit" value="Login">
+</form>
+<br><br>
+Don't have an account? <a href="/users/register">Click here</a> to register.
+
+{% endblock %}
+
+
+
+

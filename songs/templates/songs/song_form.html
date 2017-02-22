@@ -1,0 +1,28 @@
+{% extends 'songs/base.html' %}
+
+{% block title %}Add Song{% endblock %}
+
+{% block body %}
+
+{%if user.is_superuser%}
+	<h1>Enter Information here</h1> 
+	<form action="" method="post" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    {{ form.as_p }}
+
+		<br><br>
+	 	<input type="submit" value="Submit">
+	</form>
+
+{% else %}
+<br>
+<h1>Sorry,</h1>
+<h2>You don't have permission to access this page </h2>
+
+<form action="/songs/"  name ="home">
+    <br><br>
+    <input type="submit" value="Home">
+</form>
+{% endif %}
+
+{% endblock %}

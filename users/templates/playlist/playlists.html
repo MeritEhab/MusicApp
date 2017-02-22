@@ -1,0 +1,15 @@
+{% extends 'playlist/base.html'%}
+
+{% block title %}Playlist List{% endblock %}
+
+{% block body %}
+
+<h1>Palylists </h1>
+<br>
+<ul>
+{% for item in object_list %}
+<li><a href="/users/playlists/{{ item.id }}/">{{item.name}}</a></li>
+	{% endfor %}
+</ul>
+
+{% endblock %}

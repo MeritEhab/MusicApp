@@ -1,0 +1,15 @@
+{% extends 'playlist/base.html' %}
+
+{% block title %}Add Playlist{% endblock %}
+
+{% block body %}
+<h1>Enter information below</h1>
+
+	<form method='POST' action=''>{% csrf_token %}
+	{{ form.as_p }}
+	
+	
+	<input type='submit' value='Save Playlist'/>
+	</form>
+
+{% endblock %}

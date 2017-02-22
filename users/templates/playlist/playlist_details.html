@@ -1,0 +1,23 @@
+{% extends 'playlist/base.html' %}
+
+{% block title %}Playlist Details{% endblock %}
+
+{% block body%}
+	<h1>{{ playlist.name }}</h1>
+	{%for song in playlist.songs.all%}
+	<ul> {{ song.artist }} - {{song.song_title}}</ul>
+	<!-- <a href="/playlist/remove">Remove</a></ul> -->
+	{% endfor %}
+	
+	<form action="edit/" name='playlist_edit' >
+	    {% csrf_token %}
+	    <br><br>
+	    <input type="submit" value="Edit your Playlist">
+	</form>
+
+	<form action="delete/" method="post" name='playlist_delete' >
+	    {% csrf_token %}
+	    <br><br>
+	    <input type="submit" value="Delete Playlist">
+	</form>
+{%endblock%}
