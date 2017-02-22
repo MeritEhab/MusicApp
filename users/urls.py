@@ -1,7 +1,11 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 
-from users.views import ListPlaylists, DetailPlaylist, CreatePlaylist, UpdatePlaylist, DeletePlaylist
+from users.views import (
+	ListPlaylists, DetailPlaylist,
+	CreatePlaylist, UpdatePlaylist, DeletePlaylist
+	)
+
 app_name = 'user'
 
 urlpatterns = [

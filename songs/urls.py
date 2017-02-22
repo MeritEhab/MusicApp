@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-#@user_passes_test(lambda u: u.is_superuser)
+
 from songs.views import(
 	ListSongs, DetailSongs, 
 	CreateSong, UpdateSong, DeleteSong

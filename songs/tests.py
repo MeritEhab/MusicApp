@@ -20,6 +20,7 @@ class SongsTest(TestCase):
         self.client.login(username='admin', password='admin')
 
 # models tests
+
     def add_song(self, song_title="Misery", artist="Maroon 5", genre="pop"):
         return Song.objects.create(song_title=song_title, artist=artist, genre=genre)
 
@@ -87,7 +88,6 @@ class SongsTest(TestCase):
         action = self.client.get("/songs/" + str(song.id)+"/edit/" )
         self.assertEqual(action.status_code, 302)
 
-
     def test_edit_song_admin(self):
         song = self.add_song()
         self.admin_login()
@@ -98,7 +98,6 @@ class SongsTest(TestCase):
           }
         action = self.client.post("/songs/add_song/", context)
         self.assertEqual(action.status_code, 302)
-
 
     def test_delete_song_user(self):
         song = self.add_song()
